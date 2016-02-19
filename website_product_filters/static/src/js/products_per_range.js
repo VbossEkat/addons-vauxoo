@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    openerp.website.if_dom_contains('.js_attributes', function(){
+    openerp.website.if_dom_contains('.js_attributes .nav-pills', function(){
         $.ajax({
             url: "/get_ranges",
             method: "POST",
@@ -11,9 +11,9 @@
                }
             }).done(function( data ){
               $.each(JSON.parse(data), function(i, obj) {
-                $('.upper'+obj.id).next().replaceWith('<span class="badge">'+obj.qty+'</span>');
+                $('.upper'+obj.id).next().replaceWith('<span class="black-text">('+obj.qty+')</span>');
               });
-            $("span.badge:contains(0)").parents('li.range').remove();
+            $("span.black-text:contains(0)").parents('li.range').remove();
           $('div.range-list').each(function(){
             var $div_list = $(this);
             if ($div_list.find('li.range').length <= 5) {
